@@ -26,7 +26,7 @@ class BooksController < ApplicationController
 	end
 
 	def book_params
-		params.require('book').permit("name", "isbn", "quantity")	
+		params.require('book').permit("name", "isbn", "quantity", "author", "category", "published")	
 	end
 
 	def book_update_params
