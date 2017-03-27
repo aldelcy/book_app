@@ -20,7 +20,7 @@ var pageReady = function(){
 		$('.checkout_num .num').text(checkoutItems.length);
 		$('#cart_list_items').val(checkoutItems.join(', '));
 		if($('.cart_list').hasClass('open')){
-			$('.submit_transaction_list').submit();
+			$('.submit_checkout_list').submit();
 		}
 	};
 	updateCart();
