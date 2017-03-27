@@ -1,0 +1,5 @@
+'use strict';
+var item = $('.book[data-book="<%= @book.isbn %>"]');
+item.find('.quantity .num').text('<%= @book.quantity %>');
+item.find('.edit_book_form').fadeOut(200);
+item.find('.actions').fadeOut(200);

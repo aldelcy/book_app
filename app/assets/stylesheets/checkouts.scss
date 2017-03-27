@@ -1,0 +1,95 @@
+// Place all the styles related to the transactions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+input[type="checkbox"].checkout{
+	position:absolute;
+	z-index:10;
+	top:0; left:0;
+	width:20px;
+	height:20px;
+}
+.checkout_text{
+	display:none;
+	position:absolute;
+	z-index:5;
+	top:4px; left:25px;
+}
+.added_to_checkout{
+	display:none;
+	position:absolute;
+	z-index:9; top:0;
+	width:100%; padding:5px 0;
+	background-color:#16A90C;
+	color:white; text-align:center;
+	font-size:10px; border-radius:5px 5px 0 0;
+}
+
+.cart_list{
+	display:none;
+	border-top:1px dotted #ccc;
+	padding-top:30px;
+	& .checkout_list_item{
+		overflow: hidden;
+		margin-bottom: 10px;
+		& .checkout_item{
+			width:50px; padding-top:80px;
+			border-radius:5px; margin:5px;
+			display:inline-block;
+			background-size:cover;
+			background-position:center;
+			float: left;
+		}
+		& .checkout_item_info{
+			float: left;
+			padding:5px 10px;
+			color: #333;
+			width: 300px; 
+			overflow:hidden;
+			.title{ font-size:15px; font-family:'gotham_bld'; }
+			.author{font-size:12px; font-family:'gotham_book'; margin-bottom:3px;}
+		}
+		& .checkout_quantity{
+			float: left;
+			padding:0 0 0 40px;
+			input{
+				border:1px solid #333;
+			}
+		}
+	}
+}
+
+.checkout_button{
+	border-top:1px dotted #ccc;
+}
+
+.checkout_book{
+	padding-top:5px;
+	& .checkout_num{
+		float: right;
+		font-size:14px;
+		border-radius:50%; border:1px solid #333;
+		width:30px; height:30px;
+		padding-top:5px;
+		& .num{ text-align: center; }
+	}
+	& button.cart{
+		background-color:transparent;
+		margin:0; padding:0;
+		float: right;
+		font-size:34px;
+		margin-left:10px;
+		transition: 0.5;
+		&.ion-ios-cart{
+
+		}
+		&.ion-checkmark-circled{
+			cursor: pointer;
+			color: #22E515;	
+		}
+	}
+}
+
+
+

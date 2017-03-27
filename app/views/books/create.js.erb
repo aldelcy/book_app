@@ -1,0 +1,7 @@
+'use strict';
+
+var newBook = "<%= escape_javascript (render partial: './books/book', locals: { book: @book } ) %>";
+$('.books').prepend(newBook);
+var thisBook = $('.book[data-book="<%= @book.isbn %>"]');
+thisBook.hide();
+setTimeout( function(){ thisBook.fadeIn(500) }, 300);

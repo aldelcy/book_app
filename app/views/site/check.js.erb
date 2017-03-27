@@ -1,0 +1,10 @@
+'use strict';
+
+$('.list_of_items').empty();
+$('.cart_list').addClass('open');
+<% @checkouts.each do |bookQty| %>
+	<% book = bookQty[0] %>
+	<% qty = bookQty[1] %>
+	var thisBook = "<%= escape_javascript (render partial: './checkouts/list', locals: { book: book, qty: qty } ) %>";
+	$('.list_of_items').prepend(thisBook);
+<% end %>

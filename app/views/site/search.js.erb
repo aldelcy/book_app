@@ -1,0 +1,8 @@
+'use strict';
+
+
+$('.books_search').empty();
+<% @books.each do |book| %>
+	var thisBook = "<%= escape_javascript (render partial: './books/book', locals: { book: book } ) %>";
+	$('.books_search').prepend(thisBook);
+<% end %>

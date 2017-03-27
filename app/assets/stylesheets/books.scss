@@ -1,0 +1,69 @@
+// Place all the styles related to the books controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.books_search{ display:none; text-align:center;}
+.books{ text-align:center; }
+.edit_book_form{ padding-top:10px; display:none; }
+
+.col-sm-6.add_book, .col-sm-6.checkout_book{
+	position:relative;
+	top:-20px;
+	float:left;
+	width:49%;
+}
+
+.book{
+	width:200px; padding-top:310px;
+	border-radius:5px; margin:5px;
+	display:inline-block;
+	background-size:cover;
+	background-position:center;
+	cursor: pointer;
+	position: relative;
+	overflow:hidden;
+	.info{
+		display:none;
+		width: 100%; height: 100%;
+		padding:50px 5px 10px 5px;
+		position:absolute;
+		top:0; border-radius:5px;
+		background-color:rgba(black, 0.85);
+		.title{ font-size:15px; font-family:'gotham_bld'; }
+		.author{font-size:12px; font-family:'gotham_book'; margin-bottom:10px;}
+		.quantity{
+			font-size:12px; font-family:'gotham_book'; margin-top:10px;
+			& .num{ float:none; display:inline-block; margin-left:5px;}
+		}
+	}
+	.actions{
+		display:none;
+		width: 100%; height: 50%;
+		padding:20px 5px 10px 5px;
+		position:absolute;
+		bottom:-10px; border-radius:0 0 5px 5px;
+		background-color:rgba(white, 0.9);
+		color: #999;
+		button{
+			font-size: 10px; display:inline-block;
+		}
+		form{
+			&.button_to{ float:none; display:inline-block; }
+			input[type='submit']{
+				font-size: 10px;
+			}
+
+		}
+	.count_err{ font-size:8px; padding:4px 6px; display:none; }
+	}
+}
+
+
+
+.new_book_form{
+	display:none;
+	max-width:500px;
+	background-color:#eee;
+	padding:15px 19px;
+	margin-top:20px;
+}
