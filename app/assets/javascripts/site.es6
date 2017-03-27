@@ -5,15 +5,15 @@ var pageReady = function(){
 
 	function openTop(){
 		$('.full_top').css('height', '85%');
-		$('.bottom_arrow').toggleClass('ion-chevron-up ion-chevron-down');
+		$('.bottom_arrow span').toggleClass('ion-chevron-up ion-chevron-down');
 	};
 	function closeTop(){
 		$('.full_top').css('height', '430px');
-		$('.bottom_arrow').toggleClass('ion-chevron-up ion-chevron-down');
+		$('.bottom_arrow span').toggleClass('ion-chevron-up ion-chevron-down');
 	};
 
 	$('.bottom_arrow').click(function(){
-		if($(this).hasClass('ion-chevron-down')){	
+		if($(this).find('span').hasClass('ion-chevron-down')){	
 			openTop();
 		}else{
 			closeTop();
