@@ -1,31 +1,18 @@
 .full_top style="height:85%;"
-	/ .nav_left
+
 	.books_search
 	.books
 		- @books.each_with_index do |book, index|
 			= render './books/book', book: book
-	/ .nav_right
+
 
 .row.wrapper
 	.bottom_arrow
 		span.ion-chevron-up
 	.col-sm-6.add_book
 		button.green.add_new_book Add Book
-		.new_book_form
-			h2 New Book
-			= form_for @new_book, remote: true do |b|
-				= b.text_field :name, class:'full', placeholder: :name
-				= b.text_field :isbn, class:'full', placeholder: :isbn
-				= b.text_field :author, class:'full', placeholder: :author
-				br
-				.half Published on:
-				br
-				= b.date_field :published, class:'half', placeholder: :published
-				br
-				= b.number_field :quantity, class:'half', placeholder: :quantity
-				= b.text_field :category, class:'half', placeholder: :category
-				= b.submit "Add New Book", class:'green create_new_book'
-				button.cancel_new_book.red.small cancel
+		= render './books/new'
+
 
 	.col-sm-6.checkout_book
 		= form_tag check_path, class:'submit_checkout_list', method: :post, remote: true do
@@ -34,6 +21,9 @@
 		.checkout_num 
 			.num 0
 
+
+
+
 .row.wrapper.cart_list
 	.list_of_items
 	.checkout_button
@@ -41,4 +31,3 @@
 			= text_field_tag :total_checkout, nil, type:'hidden'
 			= button_tag 'Checkout', class:'green complete_checkout right'
 		
-		/ button.complete_checkout.green.right Checkout

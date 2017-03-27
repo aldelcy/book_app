@@ -1,0 +1,15 @@
+.new_book_form
+	h2 New Book
+	= form_for @new_book, remote: true do |b|
+		= b.text_field :name, class:'full', placeholder: :name
+		= b.text_field :isbn, class:'full', placeholder: :isbn
+		= b.text_field :author, class:'full', placeholder: :author
+		br
+		.half Published on:
+		br
+		= b.date_field :published, class:'half', placeholder: :published
+		br
+		= b.number_field :quantity, class:'half', placeholder: :quantity
+		= b.text_field :category, class:'half', placeholder: :category
+		= b.submit "Add New Book", class:'green create_new_book'
+		button.cancel_new_book.red.small cancel

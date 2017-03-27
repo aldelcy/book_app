@@ -39,8 +39,8 @@ var pageReady = function(){
 
 
 
-	$('.complete_checkout').click(function(){
-
+	$('.complete_checkout').click(function(event){
+		event.preventDefault();
 		var checkoutList = []
 
 		$.each(checkoutItems, function(index, value){

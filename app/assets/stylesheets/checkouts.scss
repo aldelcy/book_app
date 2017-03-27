@@ -47,8 +47,10 @@ input[type="checkbox"].checkout{
 			color: #333;
 			width: 300px; 
 			overflow:hidden;
-			.title{ font-size:15px; font-family:'gotham_bld'; }
-			.author{font-size:12px; font-family:'gotham_book'; margin-bottom:3px;}
+
+			&.soft_red{color:#DD8984;}
+			& .title{ font-size:15px; font-family:'gotham_bld'; }
+			& .author{font-size:12px; font-family:'gotham_book'; margin-bottom:3px;}
 		}
 		& .checkout_quantity{
 			float: left;

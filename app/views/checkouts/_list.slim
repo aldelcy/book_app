@@ -1,6 +1,9 @@
-.checkout_list_item
+.checkout_list_item class="#{'red' if !available(book)}"
+	
 	.checkout_item data-book="#{book.isbn}" style="background-image:url('/books/#{book.cover}');"
-	.checkout_item_info data-book="#{book.isbn}"
+	
+
+	.checkout_item_info data-book="#{book.isbn}" class="#{'soft_red' if !available(book)}"
 		.title #{book.name}
 		.author 
 			| By: 
@@ -8,9 +11,11 @@
 		| #{book.isbn}
 		br
 		| Published: #{book.published}
-	.checkout_quantity data-book="#{book.isbn}"
-		h4 Quantity
 
-		/ = form_for new_book_transaction_path(book), html:{class:'book_qty_checkout'}, remote: true do |f|
-		/ 	= f.number_field :quantity, value:qty.to_i, min:"0", max:maxcheckout(book)
-		input.transac_qty data-book="#{book.isbn}" type="number" value="#{qty.to_i}" min="0" max="#{maxcheckout(book)}"
+	
+	.checkout_quantity data-book="#{book.isbn}"
+		- if available(book)
+			h4 Quantity
+			input.transac_qty data-book="#{book.isbn}" type="number" value="#{qty.to_i}" min="1" max="#{maxcheckout(book)}"
+		- else
+			h5 Book Not available to checkout

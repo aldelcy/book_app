@@ -1,4 +1,6 @@
 class SiteController < ApplicationController
+	include BooksHelper
+
 	def home
 		@books = Book.all.order(id: 'desc')
 		@new_book = Book.new
@@ -10,7 +12,6 @@ class SiteController < ApplicationController
 
 	def search
 		params[:search_term] != '' ? @books = Book.where(["lower(name) LIKE ?", "%#{params[:search_term]}%"]) : @books = Book.all.order(id: 'desc')
-		# render json: @books
 		respond_to { |format| format.js{ render layout: false } }
 	end
 
@@ -20,7 +21,10 @@ class SiteController < ApplicationController
 			isbn = item.split('_')[0]
 			qty = item.split('_')[1]
 			book = Book.find_by(isbn: isbn)
-			@checkouts << [book, qty]
+			
+			available = available(book)
+			
+			@checkouts << [book, qty, available]
 		end
 		format_js
 	end
