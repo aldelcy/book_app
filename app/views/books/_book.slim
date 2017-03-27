@@ -1,45 +1,41 @@
-- if available(book)
-	
-
-	.book data-book="#{book.isbn}" style="background-image:url('/books/#{book.cover}');"
+.book data-book="#{book.isbn}" style="background-image:url('/books/#{book.cover}');"
+	- if available(book)
 		input.checkout data-book="#{book.isbn}" type="checkbox"
 		.checkout_text checkout
 		.added_to_checkout data-book="#{book.isbn}" added to checkout
-		.info data-book="#{book.isbn}"
-			.title #{book.name}
-			.author 
-				| By: 
-				i #{book.author}
-			| #{book.isbn}
+	- else
+		.all_checked_out All #{book.quantity} books are checked out
+
+	.info data-book="#{book.isbn}"
+		.title #{book.name}
+		.author 
+			| By: 
+			i #{book.author}
+		| #{book.isbn}
+		- if available(book)
 			.quantity 
 				| Quantity:
 				.num #{book.quantity}
 			- if issued_num(book)>0
 				| Books out: 
 				= issued_num(book)
-		.actions data-book="#{book.isbn}"
-			button.blue.small.edit_book edit
-			- if issued_num(book)==0
-				= button_to "delete", book, method: :delete, data:{confirm:"Are you sure you want to delete '#{book.name}' ?"}, remote: :true, class: "red small"
-			- else
-				button.small.cant_delete title="There are still books checked out, you cannot delete this book" delete
+		- else
+			.quantity
+				| All Books are checked out
+
+	.actions data-book="#{book.isbn}"
+		button.blue.small.edit_book edit
+		- if issued_num(book)==0
+			= button_to "delete", book, method: :delete, data:{confirm:"Are you sure you want to delete '#{book.name}' ?"}, remote: :true, class: "red small"
+		- else
+			button.small.cant_delete title="There are still books checked out, you cannot delete this book" delete
 
 
-			.edit_book_form
-				= form_for book, method: :put, remote: true do |b|
-					| Books in stock:
-					br
-					= b.number_field :quantity, in: issued_num(book)...100, style:'width:70px;', value: book.quantity
-					= b.submit "save", class:"small save"
-				code.count_err There are still #{issued_num(book)} book issued
-
-
-- else
-	
-
-	.book style="background-image:url('/books/#{book.cover}');"
-		.info style="display:block !important;"
-			.quantity 
-				| All #{book.quantity} books
+		.edit_book_form
+			= form_for book, method: :put, remote: true do |b|
+				| Books in stock:
 				br
-				| are checked out
+				= b.number_field :quantity, in: issued_num(book)...100, style:'width:70px;', value: book.quantity
+				= b.submit "save", class:"small save"
+			code.count_err There are still #{issued_num(book)} book issued
+				
